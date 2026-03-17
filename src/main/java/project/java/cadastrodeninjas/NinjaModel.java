@@ -1,5 +1,7 @@
 package project.java.cadastrodeninjas;
 
+import jakarta.persistence.Entity;
+
 @Entity //NOTE: informa que a classe pertence ao banco de dados
 
 public class NinjaModel {
