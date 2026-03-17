@@ -1,7 +1,10 @@
 package project.java.cadastrodeninjas;
 
+@Entity //NOTE: informa que a classe pertence ao banco de dados
+
 public class NinjaModel {
 
+    private long id; //NOTE: o ID sera atribuido automaticamente no banco de dados, não é necessaria atribuicao dos valores
     private String nome;
     private String email;
     private int idade;
