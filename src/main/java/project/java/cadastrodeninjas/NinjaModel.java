@@ -1,14 +1,16 @@
 package project.java.cadastrodeninjas;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity //NOTE: informa que a classe pertence ao banco de dados, transforma classe em entidade do BD
 @Table(name = "tb_cadastro") //NOTE: nomenado a tabela
 
 public class NinjaModel {
 
+    @Id //annotacion que informa geração id automatico
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //annotacion para gerar id automatico a partir da estrategia declarada
     private long id; //NOTE: o ID sera atribuido automaticamente no banco de dados, não é necessaria atribuicao dos valores
+
     private String nome;
     private String email;
     private int idade;
