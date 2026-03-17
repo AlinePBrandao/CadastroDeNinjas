@@ -1,8 +1,10 @@
 package project.java.cadastrodeninjas;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Entity //NOTE: informa que a classe pertence ao banco de dados
+@Entity //NOTE: informa que a classe pertence ao banco de dados, transforma classe em entidade do BD
+@Table(name = "tb_cadastro") //NOTE: nomenado a tabela
 
 public class NinjaModel {
 
