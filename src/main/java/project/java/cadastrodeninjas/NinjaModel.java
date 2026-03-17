@@ -13,9 +13,11 @@ public class NinjaModel {
     private String email;
     private int idade;
 
+    //NOTE: No args constructor
     public NinjaModel() {
     }
 
+    //NOTE: All args constructor
     public NinjaModel(String nome, String email, int idade) {
         this.nome = nome;
         this.email = email;
