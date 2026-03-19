@@ -11,23 +11,23 @@ public class MissoesModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nomeMissao;
+    private String nome;
     private String dificuldade;
 
     public MissoesModel() {
     }
 
-    public MissoesModel(String nomeMissao, String dificuldade) {
-        this.nomeMissao = nomeMissao;
+    public MissoesModel(String nome, String dificuldade) {
+        this.nome = nome;
         this.dificuldade = dificuldade;
     }
 
-    public String getNomeMissao() {
-        return nomeMissao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeMissao(String nomeMissao) {
-        this.nomeMissao = nomeMissao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDificuldade() {
