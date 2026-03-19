@@ -1,6 +1,9 @@
-package project.java.cadastrodeninjas;
+package project.java.cadastrodeninjas.Ninjas.Service;
 
 import jakarta.persistence.*;
+import project.java.cadastrodeninjas.Missoes.Service.MissoesModel;
+
+import java.util.List;
 
 @Entity //NOTE: informa que a classe pertence ao banco de dados, transforma classe em entidade do BD
 @Table(name = "tb_cadastro") //NOTE: nomenado a tabela
@@ -14,6 +17,9 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+    private List<MissoesModel> missoesModel;
+
 
     //NOTE: No args constructor
     public NinjaModel() {
