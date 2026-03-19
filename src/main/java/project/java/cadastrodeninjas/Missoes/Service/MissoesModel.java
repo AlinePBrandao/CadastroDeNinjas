@@ -1,18 +1,21 @@
 package project.java.cadastrodeninjas.Missoes.Service;
 
 import jakarta.persistence.*;
+import project.java.cadastrodeninjas.Ninjas.Service.NinjaModel;
 
 @Entity
 @Table(name = "tb_missoes")
 
 public class MissoesModel {
 
-    @Id
+    @Id //NOTE: annotations leem o codigo ate ; ou fechamento de }
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String nome;
     private String dificuldade;
+
+    private NinjaModel ninja;
 
     public MissoesModel() {
     }

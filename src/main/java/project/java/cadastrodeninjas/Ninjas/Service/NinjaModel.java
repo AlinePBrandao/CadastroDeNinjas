@@ -18,7 +18,7 @@ public class NinjaModel {
     private String email;
     private int idade;
 
-    private List<MissoesModel> missoesModel;
+    private List<MissoesModel> missoes;
 
 
     //NOTE: No args constructor
