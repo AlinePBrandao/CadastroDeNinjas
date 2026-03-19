@@ -1,3 +1,5 @@
+
+
 ## Sistema de Cadastro de Ninjas
 
 Este projeto é uma aplicação de arquitetura em camadas desenvolvida com Spring Boot, projetada para cadastrar e gerenciar ninjas com suas respectivas missões.
@@ -22,8 +24,6 @@ Cada ninja pode ser atribuído a uma única missão, enquanto uma missão pode s
 - **Maven**: Para build e gerenciamento de dependências do projeto.
 - **Docker**: Para build externo do banco de dados
 - **SQL**: Manipulação do banco de dados
-
----
 
 ## 🎲 Design do Banco de Dados
 
