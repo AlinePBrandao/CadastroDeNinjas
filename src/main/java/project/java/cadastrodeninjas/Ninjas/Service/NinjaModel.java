@@ -2,6 +2,7 @@ package project.java.cadastrodeninjas.Ninjas.Service;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import project.java.cadastrodeninjas.Missoes.Service.MissoesModel;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Table(name = "tb_cadastro") //NOTE: nomenado a tabela
 @NoArgsConstructor //NOTE: Gera um no args constructor automaticamente
 @AllArgsConstructor//NOTE: Gera um All args constructor automaticamente
+@Data //NOTE: Gera Getters e Setters automaticamente
 
 public class NinjaModel {
 
@@ -28,28 +30,4 @@ public class NinjaModel {
     private MissoesModel missoes;
 
     //private List<MissoesModel> missoes;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
 }
