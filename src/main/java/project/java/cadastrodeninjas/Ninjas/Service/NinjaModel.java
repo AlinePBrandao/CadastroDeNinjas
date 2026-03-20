@@ -18,7 +18,10 @@ public class NinjaModel {
     private String email;
     private int idade;
 
-    private List<MissoesModel> missoes;
+    @ManyToOne //NOTE: varios ninja tem uma unica missao
+    private MissoesModel missoes;
+
+    //private List<MissoesModel> missoes;
 
 
     //NOTE: No args constructor
