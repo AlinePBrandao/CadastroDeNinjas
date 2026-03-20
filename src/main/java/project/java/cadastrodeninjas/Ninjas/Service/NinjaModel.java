@@ -21,7 +21,10 @@ public class NinjaModel {
     private long id; //NOTE: o ID sera atribuido automaticamente no banco de dados, não é necessaria atribuicao dos valores
 
     private String nome;
+
+    @Column(unique = true) //NOTE: torna a coluna email unica
     private String email;
+
     private int idade;
 
     @ManyToOne //NOTE: varios ninja tem uma unica missao
