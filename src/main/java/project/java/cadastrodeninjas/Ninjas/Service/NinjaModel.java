@@ -19,10 +19,11 @@ public class NinjaModel {
     private int idade;
 
     @ManyToOne //NOTE: varios ninja tem uma unica missao
+    //NOTE: junta as colunas gerando uma nova
+    @JoinColumn(name = "missoes_id") //NOTE: id = foreing key pu chave extrangeira
     private MissoesModel missoes;
 
     //private List<MissoesModel> missoes;
-
 
     //NOTE: No args constructor
     public NinjaModel() {
