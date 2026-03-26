@@ -1,12 +1,10 @@
-package project.java.cadastrodeninjas.Ninjas.Service;
+package project.java.cadastrodeninjas.Ninjas.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import project.java.cadastrodeninjas.Missoes.Service.MissoesModel;
-
-import java.util.List;
+import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 
 @Entity //NOTE: informa que a classe pertence ao banco de dados, transforma classe em entidade do BD
 @Table(name = "tb_cadastro") //NOTE: nomenado a tabela
