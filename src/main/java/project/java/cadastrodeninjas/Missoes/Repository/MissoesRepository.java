@@ -1,4 +1,7 @@
 package project.java.cadastrodeninjas.Missoes.Repository;
 
-public class MissoesRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
+
+public interface MissoesRepository extends JpaRepository<MissoesModel, Long> {
 }
