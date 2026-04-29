@@ -16,13 +16,16 @@ public class NinjaModel {
 
     @Id //annotacion que informa geração id automatico
     @GeneratedValue(strategy = GenerationType.IDENTITY) //annotacion para gerar id automatico a partir da estrategia declarada
+    @Column(name = "id")
     private long id; //NOTE: o ID sera atribuido automaticamente no banco de dados, não é necessaria atribuicao dos valores
 
+    @Column(name = "nome")
     private String nome;
 
     @Column(unique = true) //NOTE: torna a coluna email unica
     private String email;
 
+    @Column(name = "idade")
     private int idade;
 
     @ManyToOne //NOTE: varios ninja tem uma unica missao
