@@ -8,9 +8,9 @@ import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 
 @Entity //NOTE: informa que a classe pertence ao banco de dados, transforma classe em entidade do BD
 @Table(name = "tb_cadastro") //NOTE: nomenado a tabela
-@NoArgsConstructor //NOTE: Gera um no args constructor automaticamente
-@AllArgsConstructor//NOTE: Gera um All args constructor automaticamente
-@Data //NOTE: Gera Getters e Setters automaticamente
+//@NoArgsConstructor //NOTE: Gera um no args constructor automaticamente
+//@AllArgsConstructor//NOTE: Gera um All args constructor automaticamente
+//@Data //NOTE: Gera Getters e Setters automaticamente
 
 public class NinjaModel {
 

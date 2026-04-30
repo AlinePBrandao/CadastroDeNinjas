@@ -9,5 +9,5 @@ public class SistemaDeCadastroDeNinjasApplication {
     public static void main(String[] args) {
         SpringApplication.run(SistemaDeCadastroDeNinjasApplication.class, args);
     }
-
 }
+  
