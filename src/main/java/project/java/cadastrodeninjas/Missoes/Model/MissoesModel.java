@@ -18,9 +18,13 @@ public class MissoesModel {
 
     @Id //NOTE: annotations leem o codigo ate ; ou fechamento de }
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "dificuldade")
     private String dificuldade;
 
     @OneToMany(mappedBy = "missoes") //NOTE: uma missao pode ter varios ninjas
