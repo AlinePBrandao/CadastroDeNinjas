@@ -1,4 +1,7 @@
 package project.java.cadastrodeninjas.Ninjas.Repository;
 
-public class NinjaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import project.java.cadastrodeninjas.Ninjas.Model.NinjaModel;
+
+public interface NinjaRepository extends JpaRepository<NinjaModel, Long> {
 }
