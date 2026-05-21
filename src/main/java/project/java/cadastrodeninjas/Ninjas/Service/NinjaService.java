@@ -5,6 +5,7 @@ import project.java.cadastrodeninjas.Ninjas.Model.NinjaModel;
 import project.java.cadastrodeninjas.Ninjas.Repository.NinjaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -18,5 +19,11 @@ public class NinjaService {
     //NOTE: Listar todos os ninjas
     public List<NinjaModel> showAllNinjas(){
         return  ninjaRepository.findAll();
+    }
+
+    //NOTE: Listar todos os ninjas por ID
+    public NinjaModel showAllNinjasIDs(long id){
+        Optional<NinjaModel> ninjaByID = ninjaRepository.findById(id);
+        return ninjaByID.orElse(null);
     }
 }
