@@ -17,37 +17,37 @@ public class NinjaController {
         this.ninjaService = ninjaService;
     }
 
-    //Endpoints
+    //NOTE: Endpoints
     @GetMapping("/boasvindas") //NOTE: passando uma rota, retorna informações
     public String boasvindas(){
         return "Boas Vindas! Essa é minha primeira mensagem nessa rota";
     }
 
-    //Adicionar ninja (CREATE)
-    @PostMapping("/create") //envia informações
+    //NOTE: Adicionar ninja (CREATE)
+    @PostMapping("/create") //NOTE: envia informações
     public String createNinja(){
         return "Ninja Criado";
     }
 
-    //Mostrar todos os ninjas (READ)
+    //NOTE: Mostrar todos os ninjas (READ)
     @GetMapping("/showAll")
     public List<NinjaModel> showAllNinjas(){
         return ninjaService.showAllNinjas();
     }
 
-    //Mostrar ninja por ID (READ)
+    //NOTE: Mostrar ninja por ID (READ)
     @GetMapping("/allIDs")
     public String showAllNinjasIDs(){
         return "IDs Ninjas";
     }
 
-    //Alterar dados do ninja (UPDATE)
+    //NOTE: Alterar dados do ninja (UPDATE)
     @PutMapping("/alter") //altera informações
     public String alterNinjas(){
         return "Alter Ninja";
     }
 
-    //Deletar ninja (DELETE)
+    //NOTE: Deletar ninja (DELETE)
     @DeleteMapping("/delete") //deleta informações
     public String deleteNinjas(){
         return "Delete Ninja";
