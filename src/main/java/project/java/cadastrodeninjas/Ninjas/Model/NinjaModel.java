@@ -33,6 +33,4 @@ public class NinjaModel {
     //NOTE: junta as colunas gerando uma nova
     @JoinColumn(name = "missoes_id") //NOTE: id = foreing key pu chave extrangeira
     private MissoesModel missoes;
-
-    //private List<MissoesModel> missoes;
 }
