@@ -31,6 +31,18 @@ public class NinjaService {
         Optional<NinjaModel> ninjaByID = ninjaRepository.findById(id); //NOTE: Ninja pode nao existir
         return ninjaByID.orElse(null);
     }
+
+    //NOTE: Atualizar ninja
+    public NinjaModel alterNinjas(long id, NinjaModel alterModel){
+        if (ninjaRepository.existsById(id)){
+            alterModel.setId(id);
+            return ninjaRepository.save(alterModel);
+        }
+        else {
+            return null;
+        }
+    }
+
     //NOTE: Deletar ninja - tem que ser um metodo void, nada sera retornado
     public void deleteNinjas(Long id){
        ninjaRepository.deleteById(id);
