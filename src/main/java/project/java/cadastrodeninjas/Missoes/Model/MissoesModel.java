@@ -11,9 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_missoes")
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 
 public class MissoesModel {
 
@@ -30,6 +30,6 @@ public class MissoesModel {
 
     @OneToMany(mappedBy = "missoes") //NOTE: uma missao pode ter varios ninjas
     @JsonIgnore //NOTE: ignora loop serialização
-    private List<NinjaModel> ninja;
+    private List<NinjaModel> ninjas;
 
 }
