@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.*;
 import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 import project.java.cadastrodeninjas.Missoes.Service.MissoesService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("missoes")
 public class MissoesController {
@@ -20,9 +22,9 @@ public class MissoesController {
     }
 
     //Mostrar missões
-    @GetMapping("/all")
-    public String showMissoes(){
-        return "Todas as Missões";
+    @GetMapping("/showAllMissoes")
+    public List<MissoesModel> showMissoes(){
+        return missoesService.showAllMissoes();
     }
 
     //Mostrar missões por ID

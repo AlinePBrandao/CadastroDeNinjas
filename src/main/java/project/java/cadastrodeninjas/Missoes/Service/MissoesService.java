@@ -3,6 +3,8 @@ package project.java.cadastrodeninjas.Missoes.Service;
 import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 import project.java.cadastrodeninjas.Missoes.Repository.MissoesRepository;
 
+import java.util.List;
+
 public class MissoesService {
 
     private MissoesRepository missoesRepository;
@@ -13,5 +15,9 @@ public class MissoesService {
 
     public MissoesModel createMissao(MissoesModel model){
         return missoesRepository.save(model);
+    }
+
+    public List<MissoesModel> showAllMissoes(){
+        return missoesRepository.findAll();
     }
 }
