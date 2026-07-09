@@ -30,25 +30,25 @@ public class NinjaController {
     }
 
     //NOTE: Mostrar todos os ninjas (READ)
-    @GetMapping("/showAll")
+    @GetMapping("/showAllNinjas")
     public List<NinjaModel> showAllNinjas(){
         return ninjaService.showAllNinjas();
     }
 
     //NOTE: Mostrar ninja por ID (READ)
-    @GetMapping("/showAllIDs/{id}") //NOTE: Path variable onde o usuario digita o ID na url
+    @GetMapping("/showAllNinjasIDs/{id}") //NOTE: Path variable onde o usuario digita o ID na url
     public NinjaModel showAllNinjasIDs(@PathVariable Long id){
         return ninjaService.showAllNinjasIDs(id);
     }
 
     //NOTE: Alterar dados do ninja (UPDATE)
-    @PutMapping("/alter/{id}") //altera informações
+    @PutMapping("/alterNinja/{id}") //altera informações
     public NinjaModel alterNinjas(@PathVariable Long id, @RequestBody NinjaModel alterModel){
         return ninjaService.alterNinjas(id, alterModel);
     }
 
     //NOTE: Deletar ninja (DELETE)
-    @DeleteMapping("/delete/{id}") //deleta informações
+    @DeleteMapping("/deleteNinja/{id}") //deleta informações
     public void deleteNinjas(@PathVariable Long id){
         ninjaService.deleteNinjas(id);
     }
