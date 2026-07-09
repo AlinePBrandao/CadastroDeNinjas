@@ -21,16 +21,14 @@ public class MissoesController {
         return missoesService.createMissao(model);
     }
 
-    //Mostrar missões
     @GetMapping("/showAllMissoes")
     public List<MissoesModel> showMissoes(){
         return missoesService.showAllMissoes();
     }
 
-    //Mostrar missões por ID
-    @GetMapping("/allIDs")
-    public String showMissoesIDs(){
-        return "IDs Missões";
+    @GetMapping("/showAllMissoesIds")
+    public MissoesModel showMissoesIDs(Long id){
+        return missoesService.showAllMissoesIDs(id);
     }
 
     //Alterar missão
