@@ -26,9 +26,9 @@ public class MissoesController {
         return missoesService.showAllMissoes();
     }
 
-    @GetMapping("/showAllMissoesIds")
-    public MissoesModel showMissoesIDs(Long id){
-        return missoesService.showAllMissoesIDs(id);
+    @GetMapping("/showMissoesById/{id}")
+    public MissoesModel showMissoesById(@PathVariable Long id){
+        return missoesService.showMissoesById(id);
     }
 
     //Alterar missão

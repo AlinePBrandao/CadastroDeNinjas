@@ -24,7 +24,7 @@ public class MissoesService {
         return missoesRepository.findAll();
     }
 
-    public MissoesModel showAllMissoesIds(long id){
+    public MissoesModel showMissoesById(long id){
         Optional<MissoesModel> missoesById = missoesRepository.findById(id);
         return missoesById.orElse(null);
     }
