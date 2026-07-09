@@ -1,5 +1,6 @@
 package project.java.cadastrodeninjas.Ninjas.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,8 @@ public class NinjaModel {
     private int idade;
 
     @ManyToOne //NOTE: varios ninja tem uma unica missao
+    @JsonIgnore
     //NOTE: junta as colunas gerando uma nova
-    @JoinColumn(name = "missoes_id") //NOTE: id = foreing key pu chave extrangeira
+    @JoinColumn(name = "missoes_id") //NOTE: id = foreing key
     private MissoesModel missoes;
 }
