@@ -38,4 +38,8 @@ public class MissoesService {
             return null;
         }
     }
+
+    public void deleteMissao(Long id){
+        missoesRepository.deleteById(id);
+    }
 }

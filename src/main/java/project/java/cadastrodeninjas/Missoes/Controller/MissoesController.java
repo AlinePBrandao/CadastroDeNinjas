@@ -38,8 +38,8 @@ public class MissoesController {
     }
 
     //Deletar missão
-    @DeleteMapping("/delete")
-    public String deleteMissao(){
-        return "Missão deletada";
+    @DeleteMapping("/deleteMissao/{id}")
+    public void deleteMissao(@PathVariable Long id){
+        missoesService.deleteMissao(id);
     }
 }
