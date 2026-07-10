@@ -28,4 +28,14 @@ public class MissoesService {
         Optional<MissoesModel> missoesById = missoesRepository.findById(id);
         return missoesById.orElse(null);
     }
+
+    public MissoesModel alterMissoes(long id, MissoesModel alterModel){
+        if (missoesRepository.existsById(id)){
+            alterModel.setId(id);
+            return missoesRepository.save(alterModel);
+        }
+        else {
+            return null;
+        }
+    }
 }

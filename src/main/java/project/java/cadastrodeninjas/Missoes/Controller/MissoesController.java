@@ -32,9 +32,9 @@ public class MissoesController {
     }
 
     //Alterar missão
-    @PutMapping("/alter")
-    public String alterMissoes(){
-        return "Missão alterada";
+    @PutMapping("/alterMissao/{id}")
+    public MissoesModel alterMissoes(@PathVariable Long id, @RequestBody MissoesModel alterModel){
+        return missoesService.alterMissoes(id, alterModel);
     }
 
     //Deletar missão
