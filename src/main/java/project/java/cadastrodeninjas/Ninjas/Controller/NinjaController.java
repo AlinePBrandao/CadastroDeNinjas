@@ -2,7 +2,6 @@ package project.java.cadastrodeninjas.Ninjas.Controller;
 
 import org.springframework.web.bind.annotation.*;
 import project.java.cadastrodeninjas.Ninjas.DTO.NinjaDTO;
-import project.java.cadastrodeninjas.Ninjas.Model.NinjaModel;
 import project.java.cadastrodeninjas.Ninjas.Service.NinjaService;
 
 import java.util.List;
@@ -32,19 +31,19 @@ public class NinjaController {
 
     //NOTE: Mostrar todos os ninjas (READ)
     @GetMapping("/showAllNinjas")
-    public List<NinjaModel> showAllNinjas(){
+    public List<NinjaDTO> showAllNinjas(){
         return ninjaService.showAllNinjas();
     }
 
     //NOTE: Mostrar ninja por ID (READ)
     @GetMapping("/showNinjasById/{id}") //NOTE: Path variable onde o usuario digita o ID na url
-    public NinjaModel showNinjasById(@PathVariable Long id){
+    public NinjaDTO showNinjasById(@PathVariable Long id){
         return ninjaService.showNinjasById(id);
     }
 
     //NOTE: Alterar dados do ninja (UPDATE)
     @PutMapping("/alterNinja/{id}") //altera informações
-    public NinjaModel alterNinjas(@PathVariable Long id, @RequestBody NinjaModel alterModel){
+    public NinjaDTO alterNinjas(@PathVariable Long id, @RequestBody NinjaDTO alterModel){
         return ninjaService.alterNinjas(id, alterModel);
     }
 
@@ -53,5 +52,4 @@ public class NinjaController {
     public void deleteNinjas(@PathVariable Long id){
         ninjaService.deleteNinjas(id);
     }
-
 }

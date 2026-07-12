@@ -8,6 +8,7 @@ import project.java.cadastrodeninjas.Ninjas.Repository.NinjaRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NinjaService {
@@ -28,28 +29,33 @@ public class NinjaService {
     }
 
     //NOTE: Listar todos os ninjas
-    public List<NinjaModel> showAllNinjas(){
-        return  ninjaRepository.findAll();
+    public List<NinjaDTO> showAllNinjas(){
+        List<NinjaModel> model = ninjaRepository.findAll();
+        //NOTE: Retorna a list
+       return model.stream()
+               .map(ninjaMapper::map)//NOTE: Transforma elementos do stream
+               .collect(Collectors.toList()); //NOTE: Converte o stream em uma coleção
     }
 
     //NOTE: Listar os ninjas por ID
-    public NinjaModel showNinjasById(long id){
+    public NinjaDTO showNinjasById(long id){
         Optional<NinjaModel> ninjaByID = ninjaRepository.findById(id); //NOTE: Ninja pode nao existir
-        return ninjaByID.orElse(null);
+        return ninjaByID.map(ninjaMapper::map).orElse(null); //NOTE: Também usa streams
     }
 
     //NOTE: Atualizar ninja
-    public NinjaModel alterNinjas(long id, NinjaModel alterModel){
-        if (ninjaRepository.existsById(id)){
-            alterModel.setId(id);
-            return ninjaRepository.save(alterModel);
+    public NinjaDTO alterNinjas(long id, NinjaDTO alterModel){
+        Optional<NinjaModel> ninjaExist = ninjaRepository.findById(id);
+        if (ninjaExist.isPresent()){
+            NinjaModel updatedNinja = ninjaMapper.map(alterModel);
+            updatedNinja.setId(id);
+            NinjaModel  ninja = ninjaRepository.save(updatedNinja);
+            return ninjaMapper.map(ninja);
         }
-        else {
-            return null;
-        }
+        return null;
     }
 
-    //NOTE: Deletar ninja - tem que ser um metodo void, nada sera retornado
+    //NOTE: Deletar ninja - tem que ser um metodo void, nada sera retornado. Não depende do DTO, não depende do moddel, e sim do Repositpry (JPA)
     public void deleteNinjas(Long id){
        ninjaRepository.deleteById(id);
     }
