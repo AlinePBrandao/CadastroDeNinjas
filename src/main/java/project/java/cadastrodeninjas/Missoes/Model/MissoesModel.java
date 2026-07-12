@@ -28,6 +28,9 @@ public class MissoesModel {
     @Column(name = "dificuldade")
     private String dificuldade;
 
+    @Column(name = "descricao")
+    private String descricao;
+
     @OneToMany(mappedBy = "missoes") //NOTE: uma missao pode ter varios ninjas
     @JsonIgnore //NOTE: ignora loop serialização
     private List<NinjaModel> ninjas;
