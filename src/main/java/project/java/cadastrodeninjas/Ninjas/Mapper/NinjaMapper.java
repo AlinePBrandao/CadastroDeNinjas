@@ -15,7 +15,6 @@ public class NinjaMapper {
         ninjaModel.setIdade(ninjaDTO.getIdade());
         ninjaModel.setRank(ninjaDTO.getRank());
         ninjaModel.setMissoes(ninjaDTO.getMissoes());
-        //TODO: alterar missoes para Missoes DTO
 
         return ninjaModel;
     }
@@ -28,7 +27,6 @@ public class NinjaMapper {
         ninjaDTO.setIdade(ninjaModel.getIdade());
         ninjaDTO.setRank(ninjaModel.getRank());
         ninjaDTO.setMissoes(ninjaModel.getMissoes());
-        //TODO: alterar missoes para Missoes DTO
 
         return ninjaDTO;
     }
