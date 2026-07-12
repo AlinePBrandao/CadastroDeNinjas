@@ -15,18 +15,20 @@ public class NinjaMapper {
         ninjaModel.setIdade(ninjaDTO.getIdade());
         ninjaModel.setRank(ninjaDTO.getRank());
         ninjaModel.setMissoes(ninjaDTO.getMissoes());
+        //TODO: alterar missoes para Missoes DTO
 
         return ninjaModel;
     }
 
     public NinjaDTO map(NinjaModel ninjaModel){
         NinjaDTO ninjaDTO = new NinjaDTO();
-        ninjaDTO.setId(ninjaDTO.getId());
-        ninjaDTO.setNome(ninjaDTO.getNome());
-        ninjaDTO.setEmail(ninjaDTO.getEmail());
-        ninjaDTO.setIdade(ninjaDTO.getIdade());
-        ninjaDTO.setRank(ninjaDTO.getRank());
-        ninjaDTO.setMissoes(ninjaDTO.getMissoes());
+        ninjaDTO.setId(ninjaModel.getId());
+        ninjaDTO.setNome(ninjaModel.getNome());
+        ninjaDTO.setEmail(ninjaModel.getEmail());
+        ninjaDTO.setIdade(ninjaModel.getIdade());
+        ninjaDTO.setRank(ninjaModel.getRank());
+        ninjaDTO.setMissoes(ninjaModel.getMissoes());
+        //TODO: alterar missoes para Missoes DTO
 
         return ninjaDTO;
     }
