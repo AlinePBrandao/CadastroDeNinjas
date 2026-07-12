@@ -1,6 +1,7 @@
 package project.java.cadastrodeninjas.Missoes.Controller;
 
 import org.springframework.web.bind.annotation.*;
+import project.java.cadastrodeninjas.Missoes.DTO.MissoesDTO;
 import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 import project.java.cadastrodeninjas.Missoes.Service.MissoesService;
 
@@ -17,7 +18,7 @@ public class MissoesController {
     }
 
     @PostMapping("/createMissao") //envia informações
-    public MissoesModel createMissao(@RequestBody MissoesModel model){
+    public MissoesDTO createMissao(@RequestBody MissoesDTO model){
         return missoesService.createMissao(model);
     }
 

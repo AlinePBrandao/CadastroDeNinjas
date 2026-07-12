@@ -1,6 +1,8 @@
 package project.java.cadastrodeninjas.Missoes.Service;
 
 import org.springframework.stereotype.Service;
+import project.java.cadastrodeninjas.Missoes.DTO.MissoesDTO;
+import project.java.cadastrodeninjas.Missoes.Mapper.MissoesMapper;
 import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 import project.java.cadastrodeninjas.Missoes.Repository.MissoesRepository;
 
@@ -11,13 +13,17 @@ import java.util.Optional;
 public class MissoesService {
 
     private MissoesRepository missoesRepository;
+    private MissoesMapper missoesMapper;
 
-    public MissoesService(MissoesRepository missoesRepository){
+    public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
         this.missoesRepository = missoesRepository;
+        this.missoesMapper = missoesMapper;
     }
 
-    public MissoesModel createMissao(MissoesModel model){
-        return missoesRepository.save(model);
+    public MissoesDTO createMissao(MissoesDTO modelDTO){
+        MissoesModel model = missoesMapper.map(modelDTO);
+        model = missoesRepository.save(model);
+        return missoesMapper.map(model);
     }
 
     public List<MissoesModel> showAllMissoes(){
