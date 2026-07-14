@@ -1,7 +1,7 @@
 package project.java.cadastrodeninjas.Ninjas.Controller;
 
 import org.springframework.web.bind.annotation.*;
-import project.java.cadastrodeninjas.Ninjas.Model.NinjaModel;
+import project.java.cadastrodeninjas.Ninjas.DTO.NinjaDTO;
 import project.java.cadastrodeninjas.Ninjas.Service.NinjaService;
 
 import java.util.List;
@@ -24,33 +24,32 @@ public class NinjaController {
     }
 
     //NOTE: Adicionar ninja (CREATE)
-    @PostMapping("/create") //NOTE: envia informações
-    public NinjaModel createNinja(@RequestBody NinjaModel model){ //NOTE: envia no corpo da requisição um json com os dados cadastrados a serem desserializados
+    @PostMapping("/createNinja") //NOTE: envia informações
+    public NinjaDTO createNinja(@RequestBody NinjaDTO model){ //NOTE: envia no corpo da requisição um json com os dados cadastrados a serem desserializados
         return ninjaService.createNinja(model);
     }
 
     //NOTE: Mostrar todos os ninjas (READ)
-    @GetMapping("/showAll")
-    public List<NinjaModel> showAllNinjas(){
+    @GetMapping("/showAllNinjas")
+    public List<NinjaDTO> showAllNinjas(){
         return ninjaService.showAllNinjas();
     }
 
     //NOTE: Mostrar ninja por ID (READ)
-    @GetMapping("/showAllIDs/{id}") //NOTE: Path variable onde o usuario digita o ID na url
-    public NinjaModel showAllNinjasIDs(@PathVariable Long id){
-        return ninjaService.showAllNinjasIDs(id);
+    @GetMapping("/showNinjasById/{id}") //NOTE: Path variable onde o usuario digita o ID na url
+    public NinjaDTO showNinjasById(@PathVariable Long id){
+        return ninjaService.showNinjasById(id);
     }
 
     //NOTE: Alterar dados do ninja (UPDATE)
-    @PutMapping("/alter/{id}") //altera informações
-    public NinjaModel alterNinjas(@PathVariable Long id, @RequestBody NinjaModel alterModel){
+    @PutMapping("/alterNinja/{id}") //altera informações
+    public NinjaDTO alterNinjas(@PathVariable Long id, @RequestBody NinjaDTO alterModel){
         return ninjaService.alterNinjas(id, alterModel);
     }
 
     //NOTE: Deletar ninja (DELETE)
-    @DeleteMapping("/delete/{id}") //deleta informações
+    @DeleteMapping("/deleteNinja/{id}") //deleta informações
     public void deleteNinjas(@PathVariable Long id){
         ninjaService.deleteNinjas(id);
     }
-
 }

@@ -1,38 +1,46 @@
 package project.java.cadastrodeninjas.Missoes.Controller;
 
 import org.springframework.web.bind.annotation.*;
+import project.java.cadastrodeninjas.Missoes.DTO.MissoesDTO;
+import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
+import project.java.cadastrodeninjas.Missoes.Service.MissoesService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("missoes")
 public class MissoesController {
 
-    //Adicionar missão
-    @PostMapping("/create") //envia informações
-    public String criateNinja(){
-        return "Missão Criada";
+    private MissoesService missoesService;
+
+    public MissoesController(MissoesService missoesService){
+        this.missoesService = missoesService;
     }
 
-    //Mostrar missões
-    @GetMapping("/all")
-    public String showMissoes(){
-        return "Todas as Missões";
+    @PostMapping("/createMissao") //envia informações
+    public MissoesDTO createMissao(@RequestBody MissoesDTO model){
+        return missoesService.createMissao(model);
     }
 
-    //Mostrar missões por ID
-    @GetMapping("/allIDs")
-    public String showMissoesIDs(){
-        return "IDs Missões";
+    @GetMapping("/showAllMissoes")
+    public List<MissoesDTO> showMissoes(){
+        return missoesService.showAllMissoes();
+    }
+
+    @GetMapping("/showMissoesById/{id}")
+    public MissoesDTO showMissoesById(@PathVariable Long id){
+        return missoesService.showMissoesById(id);
     }
 
     //Alterar missão
-    @PutMapping("/alter")
-    public String alterMissoes(){
-        return "Missão alterada";
+    @PutMapping("/alterMissao/{id}")
+    public MissoesDTO alterMissoes(@PathVariable Long id, @RequestBody MissoesDTO alterModel){
+        return missoesService.alterMissoes(id, alterModel);
     }
 
     //Deletar missão
-    @DeleteMapping("/delete")
-    public String deleteMissao(){
-        return "Missão deletada";
+    @DeleteMapping("/deleteMissao/{id}")
+    public void deleteMissao(@PathVariable Long id){
+        missoesService.deleteMissao(id);
     }
 }

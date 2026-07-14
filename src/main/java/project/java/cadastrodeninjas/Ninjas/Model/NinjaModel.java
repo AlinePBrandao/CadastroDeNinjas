@@ -29,8 +29,12 @@ public class NinjaModel {
     @Column(name = "idade")
     private int idade;
 
+    @Column(name = "rank")
+    private String rank;
+
     @ManyToOne //NOTE: varios ninja tem uma unica missao
+    //sem annotation @JsonIgnore para que a missão não seja ignorada pelo banco
     //NOTE: junta as colunas gerando uma nova
-    @JoinColumn(name = "missoes_id") //NOTE: id = foreing key pu chave extrangeira
+    @JoinColumn(name = "missoes_id") //NOTE: id = foreing key
     private MissoesModel missoes;
 }
