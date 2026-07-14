@@ -3,6 +3,7 @@ package project.java.cadastrodeninjas.Ninjas.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import project.java.cadastrodeninjas.Missoes.DTO.MissoesDTO;
 import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 
 //Annotations Lombok
@@ -16,6 +17,5 @@ public class NinjaDTO {
     private String email;
     private int idade;
     private String rank;
-    private MissoesModel missoes;
-
+    private MissoesDTO missoes;
 }
