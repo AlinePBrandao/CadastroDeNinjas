@@ -7,6 +7,11 @@ import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 @Component
 public class MissoesMapper {
     public MissoesModel map(MissoesDTO missoesDTO){
+
+        if (missoesDTO == null){
+            return null;
+        }
+
         MissoesModel missoesModel = new MissoesModel();
         missoesModel.setId(missoesDTO.getId());
         missoesModel.setNome(missoesDTO.getNome());
@@ -16,6 +21,11 @@ public class MissoesMapper {
         return missoesModel;
     }
     public MissoesDTO map(MissoesModel missoesModel){
+
+        if ((missoesModel == null)){
+            return null;
+        }
+
         MissoesDTO missoesDTO = new MissoesDTO();
         missoesDTO.setId(missoesModel.getId());
         missoesDTO.setNome(missoesModel.getNome());
