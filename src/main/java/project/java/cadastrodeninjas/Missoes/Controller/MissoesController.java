@@ -23,18 +23,18 @@ public class MissoesController {
     }
 
     @GetMapping("/showAllMissoes")
-    public List<MissoesModel> showMissoes(){
+    public List<MissoesDTO> showMissoes(){
         return missoesService.showAllMissoes();
     }
 
     @GetMapping("/showMissoesById/{id}")
-    public MissoesModel showMissoesById(@PathVariable Long id){
+    public MissoesDTO showMissoesById(@PathVariable Long id){
         return missoesService.showMissoesById(id);
     }
 
     //Alterar missão
     @PutMapping("/alterMissao/{id}")
-    public MissoesModel alterMissoes(@PathVariable Long id, @RequestBody MissoesModel alterModel){
+    public MissoesDTO alterMissoes(@PathVariable Long id, @RequestBody MissoesDTO alterModel){
         return missoesService.alterMissoes(id, alterModel);
     }
 

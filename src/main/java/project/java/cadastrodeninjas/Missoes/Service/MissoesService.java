@@ -8,6 +8,7 @@ import project.java.cadastrodeninjas.Missoes.Repository.MissoesRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MissoesService {
@@ -26,23 +27,27 @@ public class MissoesService {
         return missoesMapper.map(model);
     }
 
-    public List<MissoesModel> showAllMissoes(){
-        return missoesRepository.findAll();
+    public List<MissoesDTO> showAllMissoes(){
+        List<MissoesModel> model = missoesRepository.findAll();
+        return model.stream()
+                .map(missoesMapper::map)
+                .collect(Collectors.toList());
     }
 
-    public MissoesModel showMissoesById(long id){
+    public MissoesDTO showMissoesById(long id){
         Optional<MissoesModel> missoesById = missoesRepository.findById(id);
-        return missoesById.orElse(null);
+        return missoesById.map(missoesMapper::map).orElse(null);
     }
 
-    public MissoesModel alterMissoes(long id, MissoesModel alterModel){
-        if (missoesRepository.existsById(id)){
-            alterModel.setId(id);
-            return missoesRepository.save(alterModel);
+    public MissoesDTO alterMissoes(long id, MissoesDTO alterModel){
+        Optional<MissoesModel> missaoExist = missoesRepository.findById(id);
+        if (missaoExist.isPresent()){
+            MissoesModel updateMissao = missoesMapper.map(alterModel);
+            updateMissao.setId(id);
+            MissoesModel missao = missoesRepository.save(updateMissao);
+            return missoesMapper.map(missao);
         }
-        else {
             return null;
-        }
     }
 
     public void deleteMissao(Long id){
