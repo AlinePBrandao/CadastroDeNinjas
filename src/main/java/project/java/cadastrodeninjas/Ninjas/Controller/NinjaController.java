@@ -28,9 +28,9 @@ public class NinjaController {
     //NOTE: Adicionar ninja (CREATE)
     @PostMapping("/createNinja") //NOTE: envia informações
     public ResponseEntity<String> createNinja(@RequestBody NinjaDTO model){ //NOTE: envia no corpo da requisição um json com os dados cadastrados a serem desserializados
-        NinjaDTO newNinja = ninjaService.createNinja(model);
+        NinjaDTO ninja = ninjaService.createNinja(model);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Ninja criado com sucesso: " + newNinja.getNome());
+                .body("Ninja criado com sucesso: " + ninja.getNome());
     }
 
     //NOTE: Mostrar todos os ninjas (READ)
