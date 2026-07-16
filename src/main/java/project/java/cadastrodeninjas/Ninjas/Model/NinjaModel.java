@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 
 @Entity //NOTE: informa que a classe pertence ao banco de dados, transforma classe em entidade do BD
@@ -12,6 +13,8 @@ import project.java.cadastrodeninjas.Missoes.Model.MissoesModel;
 @NoArgsConstructor //NOTE: Gera um no args constructor automaticamente
 @AllArgsConstructor//NOTE: Gera um All args constructor automaticamente
 @Data //NOTE: Gera Getters e Setters automaticamente
+@ToString(exclude = "missoes") //NOTE: converte objetos referência de memória e transformar em valor em memória
+//NOTE: Excluir missoes soluciona o problema de recursão onde missão está em um loop infinito
 
 public class NinjaModel {
 
