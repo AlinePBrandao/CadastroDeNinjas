@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @Service
 public class NinjaService {
 
-    private NinjaRepository ninjaRepository; //NOTE: injeção de dependencia
-    private NinjaMapper ninjaMapper;
+    private final NinjaRepository ninjaRepository; //NOTE: injeção de dependencia
+    private final NinjaMapper ninjaMapper;
 
     public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
