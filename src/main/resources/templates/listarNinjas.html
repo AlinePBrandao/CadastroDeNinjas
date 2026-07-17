@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Ninjas</title>
+
+    <link rel="stylesheet" th:href="@{/css/listarStyle.css}">
+</head>
+<body>
+
+<div class="container"></div>
+
+<h1>Lista de Ninjas</h1>
+<table class="ninja-table">
+    <thead>
+    <tr>
+        <th>Imagem</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Idade</th>
+        <th>Rank</th>
+        <th>Missoes</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each ="ninja: ${ninjas}">
+
+        <td>
+            <img th:src="${ninja.imgUrl}" class="avatar" alt="Imagem do Ninja">
+        </td>
+        <td th:text="${ninja.id}"> </td>
+        <td th:text="${ninja.nome}"> </td>
+        <td th:text="${ninja.email}"> </td>
+        <td th:text="${ninja.idade}"> </td>
+        <td>
+            <span class="rank" th:text="${ninja.rank}"></span>
+        </td>
+        <td>
+            <span th:if="${ninja.missoes}">
+                    <strong th:text="${ninja.missoes.nome}"></strong>
+                    <br>
+                    <small>Dificuldade:
+                        <span th:text="${ninja.missoes.dificuldade}"></span>
+                    </small>
+                </span>
+
+            <span class="sem-missao"
+                  th:if="${ninja.missoes == null}">
+                    Sem missão cadastrada
+                </span>
+        </td>
+
+        <td class="acoes">
+
+            <a href="#" class="btn btn-info">
+                th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">
+                Ver detalhes
+            </a>
+
+            <a href="#" class="btn btn-warning">
+                th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">
+                Alterar
+            </a>
+
+            <a class="btn btn-danger"
+               th:href="@{/ninjas/ui/deleteNinja/{id}(id=${ninja.id})}">
+                Deletar
+            </a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

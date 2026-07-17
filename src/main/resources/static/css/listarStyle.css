@@ -1,0 +1,142 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:40px;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+}
+
+h1{
+    margin-bottom:25px;
+    color:#222;
+    text-align:center;
+    font-size:2rem;
+}
+
+.ninja-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.ninja-table thead{
+    background:#202940;
+    color:white;
+}
+
+.ninja-table th{
+    padding:18px;
+    text-align:left;
+    font-size:15px;
+    letter-spacing:.5px;
+}
+
+.ninja-table td{
+    padding:18px;
+    border-bottom:1px solid #eee;
+    vertical-align:middle;
+}
+
+.ninja-table tbody tr{
+    transition:.3s;
+}
+
+.ninja-table tbody tr:hover{
+    background:#f8f9ff;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid #4f46e5;
+}
+
+.rank{
+    background:#4f46e5;
+    color:white;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.sem-missao{
+    color:#999;
+    font-style:italic;
+}
+
+.acoes{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:8px;
+    color:white;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-info{
+    background:#2563eb;
+}
+
+.btn-info:hover{
+    background:#1d4ed8;
+}
+
+.btn-warning{
+    background:#f59e0b;
+}
+
+.btn-warning:hover{
+    background:#d97706;
+}
+
+.btn-danger{
+    background:#dc2626;
+}
+
+.btn-danger:hover{
+    background:#b91c1c;
+}
+
+@media(max-width:900px){
+
+    body{
+        padding:15px;
+    }
+
+    .ninja-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .acoes{
+        flex-direction:column;
+    }
+
+}
