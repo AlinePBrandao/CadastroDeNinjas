@@ -40,4 +40,7 @@ public class NinjaModel {
     //NOTE: junta as colunas gerando uma nova
     @JoinColumn(name = "missoes_id") //NOTE: id = foreing key
     private MissoesModel missoes;
+
+    @Column(name = "img_url")
+    private String imgUrl;
 }

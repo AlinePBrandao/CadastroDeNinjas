@@ -21,6 +21,7 @@ public class NinjaMapper {
         ninjaModel.setIdade(ninjaDTO.getIdade());
         ninjaModel.setRank(ninjaDTO.getRank());
         ninjaModel.setMissoes(missoesMapper.map(ninjaDTO.getMissoes()));
+        ninjaModel.setImgUrl(ninjaDTO.getImgUrl());
 
         return ninjaModel;
     }
@@ -33,6 +34,7 @@ public class NinjaMapper {
         ninjaDTO.setIdade(ninjaModel.getIdade());
         ninjaDTO.setRank(ninjaModel.getRank());
         ninjaDTO.setMissoes(missoesMapper.map(ninjaModel.getMissoes()));
+        ninjaDTO.setImgUrl(ninjaModel.getImgUrl());
 
         return ninjaDTO;
     }
