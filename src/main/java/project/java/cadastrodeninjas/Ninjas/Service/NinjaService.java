@@ -44,7 +44,7 @@ public class NinjaService {
     }
 
     //NOTE: Atualizar ninja
-    public NinjaDTO alterNinjas(long id, NinjaDTO alterModel){
+    public NinjaDTO updateNinjas(long id, NinjaDTO alterModel){
         Optional<NinjaModel> ninjaExist = ninjaRepository.findById(id);
         if (ninjaExist.isPresent()){
             NinjaModel updatedNinja = ninjaMapper.map(alterModel);
