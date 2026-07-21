@@ -4,57 +4,77 @@
     <meta charset="UTF-8">
     <title>Detalhes do Ninja</title>
 
-      <link rel="stylesheet" th:href="@{/css/detalhesStyle.css}">
+      <link rel="stylesheet" th:href="@{/css/detalhes.css}">
   </head>
   <body>
 
-  <div class="container"></div>
+  <div class="container">
 
-  <h1>Detalhes do Ninja</h1>
-  <table class="ninja-table">
-      <thead>
-      <tr>
-          <th>Imagem</th>
-          <th>Id</th>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Idade</th>
-          <th>Rank</th>
-          <th>Missoes</th>
-          <th>Ações</th>
-      </tr>
-      </thead>
+      <div class="card">
 
-      <tbody>
-      <tr th:each ="ninja: ${ninjas}">
-          <td>
-              <img th:src="${ninja.imgUrl}" class="avatar" alt="Imagem do Ninja">
-          </td>
-          <td th:text="${ninja.id}"> </td>
-          <td th:text="${ninja.nome}"> </td>
-          <td th:text="${ninja.email}"> </td>
-          <td th:text="${ninja.idade}"> </td>
-          <td>
-              <span class="rank" th:text="${ninja.rank}"></span>
-          </td>
-          <td>
-            <span th:if="${ninja.missoes}">
-                    <strong th:text="${ninja.missoes.nome}"></strong>
-                    <br>
-                    <small>Dificuldade:
-                        <span th:text="${ninja.missoes.dificuldade}"></span>
-                    </small>
-                </span>
+          <div class="topo">
+              <img class="avatar"
+                   th:src="${ninja.imgUrl}"
+                   alt="Imagem do Ninja">
 
-              <span class="sem-missao"
-                    th:if="${ninja.missoes == null}">
-                    Sem missão cadastrada
-                </span>
-          </td>
-      </tr>
-      </tbody>
-  </table>
+              <div class="info-principal">
+                  <h1 th:text="${ninja.nome}">Nome do Ninja</h1>
+                  <span class="rank" th:text="${ninja.rank}">JOUNIN</span>
+              </div>
+          </div>
+
+          <div class="grid-info">
+
+              <div class="info-box">
+                  <span class="label">ID</span>
+                  <span class="valor" th:text="${ninja.id}">1</span>
+              </div>
+
+              <div class="info-box">
+                  <span class="label">Idade</span>
+                  <span class="valor" th:text="${ninja.idade}">17</span>
+              </div>
+
+              <div class="info-box full">
+                  <span class="label">E-mail</span>
+                  <span class="valor" th:text="${ninja.email}">naruto@konoha.com</span>
+              </div>
+
+          </div>
+
+          <div class="missao-box">
+              <h2>📜 Missão</h2>
+
+              <div th:if="${ninja.missoes}">
+                  <p><strong>Nome:</strong>
+                      <span th:text="${ninja.missoes.nome}"></span>
+                  </p>
+
+                  <p><strong>Dificuldade:</strong>
+                      <span th:text="${ninja.missoes.dificuldade}"></span>
+                  </p>
+              </div>
+
+              <p class="sem-missao" th:if="${ninja.missoes == null}">
+                  Este ninja ainda não possui missão cadastrada.
+              </p>
+          </div>
+
+          <div class="acoes">
+              <a class="btn btn-voltar"
+                 th:href="@{/ninjas/ui/showAllNinjas}">
+                  ⬅ Voltar para lista
+              </a>
+
+              <a class="btn btn-editar" href="#">
+                  ✏️ Editar Ninja
+              </a>
+          </div>
+
+      </div>
+
   </div>
+
   </body>
   </html>
 

@@ -47,10 +47,21 @@ public class NinjaControllerUi {
         return "ninja-adicionar";
     }
 
+    @GetMapping("/updateNinja/{id}")
+    public String updateNinjas(@PathVariable Long id, Model model){
+        NinjaDTO ninja =  ninjaService.showNinjasById(id);
+        if (ninja != null){
+            model.addAttribute("ninja", ninja);
+            return "ninja-alterar";
+        }
+        model.addAttribute("mensagem", "Ninja não encontrado");
+        return "redirect:/ninjas/ui/showAllNinjas";
+    }
+
     @PostMapping("/save")
     public String saveNinja(@ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes){
         ninjaService.createNinja(ninja);
-        redirectAttributes.addFlashAttribute("mensagem", "Ninja cadastrado com sucesso!");
+        redirectAttributes.addFlashAttribute("mensagem", "Ninja salvo com sucesso!");
         return "redirect:/ninjas/ui/showAllNinjas";
     }
 

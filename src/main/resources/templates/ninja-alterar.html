@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Ninja</title>
+
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-card">
+
+        <h1>✏️ Alterar Ninja</h1>
+
+        <form th:action="@{/ninjas/ui/save}"
+              th:object="${ninja}"
+              method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" th:field="*{nome}" required>
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" th:field="*{email}" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Idade</label>
+                    <input type="number" th:field="*{idade}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Rank</label>
+                    <select th:field="*{rank}">
+                        <option value="GENIN">GENIN</option>
+                        <option value="CHUUNIN">CHUUNIN</option>
+                        <option value="JOUNIN">JOUNIN</option>
+                        <option value="ANBU">ANBU</option>
+                        <option value="KAGE">KAGE</option>
+                        <option value="HOKAGE">HOKAGE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>URL da Imagem</label>
+                <input type="text" th:field="*{imgUrl}">
+            </div>
+
+            <div class="preview">
+                <img th:src="*{imgUrl}" alt="Preview da imagem">
+            </div>
+
+            <div class="acoes">
+                <button type="submit" class="btn btn-salvar">
+                    💾 Salvar
+                </button>
+
+                <a class="btn btn-voltar"
+                   th:href="@{/ninjas/ui/showAllNinjas}">
+                    ⬅ Voltar para lista
+                </a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
