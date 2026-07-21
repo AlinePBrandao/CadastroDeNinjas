@@ -56,8 +56,8 @@ public class NinjaController {
 
     //NOTE: Alterar dados do ninja (UPDATE)
     @PutMapping("/updateNinja/{id}") //altera informações
-    public ResponseEntity<?> alterNinjas(@PathVariable Long id, @RequestBody NinjaDTO alterModel){
-        NinjaDTO ninja =  ninjaService.updateNinjas(id, alterModel);
+    public ResponseEntity<?> updateNinjas(@PathVariable Long id, @RequestBody NinjaDTO updateModel){
+        NinjaDTO ninja =  ninjaService.updateNinjas(id, updateModel);
         if (ninja != null){
             return ResponseEntity.ok(ninja);
         }
