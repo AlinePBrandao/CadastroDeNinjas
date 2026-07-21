@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Tabela de Ninjas</title>
 
-    <link rel="stylesheet" th:href="@{/css/listarStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/listar.css}">
 </head>
 <body>
 
-<div class="container"></div>
+<div class="container">
 
 <h1>Lista de Ninjas</h1>
 <table class="ninja-table">
@@ -55,12 +55,14 @@
 
         <td class="acoes">
 
-            <a href="#" class="btn btn-info">
+            <a class="btn btn-info"
+               th:href="@{/ninjas/ui/showNinjasById/{id}(id=${ninja.id})}">
                 Ver detalhes
             </a>
 
-            <a href="#" class="btn btn-warning">
-                Alterar
+            <a class="btn btn-warning"
+               th:href="@{/ninjas/ui/updateNinja/{id}(id=${ninja.id})}">
+               Alterar
             </a>
 
             <a class="btn btn-danger"
