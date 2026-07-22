@@ -140,3 +140,9 @@ h1{
     }
 
 }
+
+.top-bar{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:20px;
+}

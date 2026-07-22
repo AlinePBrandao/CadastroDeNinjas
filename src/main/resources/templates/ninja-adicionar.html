@@ -4,31 +4,90 @@
     <meta charset="UTF-8">
     <title>Adicionar Ninja</title>
 
-    <link rel="stylesheet" th:href="@{/css/adicionarStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/adicionar.css}">
 </head>
 <body>
 
-<div class="container"></div>
+<div class="container">
+    <div class="form-card">
 
-<h1>Adicionar Ninja</h1>
-<table class="ninja-table">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Imagem</th>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Idade</th>
-        <th>Rank</th>
-        <th>Missoes</th>
-    </tr>
-    </thead>
+        <h1>🥷 Adicionar Ninja</h1>
+        <p class="subtitulo">
+            Cadastre um novo ninja e associe uma missão opcional.
+        </p>
 
-    <tbody>
+        <form th:action="@{/ninjas/ui/save}"
+              th:object="${ninja}"
+              method="post">
 
-    </tbody>
-</table>
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" th:field="*{nome}" placeholder="Ex: Naruto Uzumaki" required>
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" th:field="*{email}" placeholder="Ex: naruto@konoha.com" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Idade</label>
+                    <input type="number" th:field="*{idade}" min="1" placeholder="17" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Rank</label>
+                    <select th:field="*{rank}">
+                        <option value="GENIN">GENIN</option>
+                        <option value="CHUUNIN">CHUUNIN</option>
+                        <option value="JOUNIN">JOUNIN</option>
+                        <option value="ANBU">ANBU</option>
+                        <option value="KAGE">KAGE</option>
+                        <option value="HOKAGE">HOKAGE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Missão</label>
+
+                <select name="missaoId">
+                    <option value="">-- Sem missão --</option>
+
+                    <option th:each="missao : ${missoes}"
+                            th:value="${missao.id}"
+                            th:text="${missao.nome + ' - ' + missao.dificuldade}">
+                    </option>
+                </select>
+
+                <small>Você pode associar uma missão agora ou deixar para depois.</small>
+            </div>
+
+            <div class="form-group">
+                <label>URL da Imagem</label>
+                <input type="text"
+                       th:field="*{imgUrl}"
+                       placeholder="https://exemplo.com/imagem.jpg">
+            </div>
+
+            <div class="preview">
+                <img th:src="*{imgUrl}"
+                     alt="Preview da imagem do ninja">
+            </div>
+
+            <div class="acoes">
+                <button type="submit" class="btn btn-salvar">
+                    💾 Salvar Ninja
+                </button>
+
+                <a class="btn btn-voltar"
+                   th:href="@{/ninjas/ui/showAllNinjas}">
+                    ⬅ Voltar para lista
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>

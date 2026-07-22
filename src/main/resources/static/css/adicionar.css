@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.container {
+    width: 100%;
+    max-width: 850px;
+}
+
+.form-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 38px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+
+h1 {
+    text-align: center;
+    color: #202940;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+input, select {
+    padding: 13px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all .25s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 4px rgba(79,70,229,.12);
+}
+
+small {
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: .85rem;
+}
+
+.preview {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 28px;
+}
+
+.preview img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #4f46e5;
+    background: #f3f4f6;
+}
+
+.acoes {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-size: 15px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,.18);
+}
+
+.btn-salvar {
+    background: #16a34a;
+}
+
+.btn-salvar:hover {
+    background: #15803d;
+}
+
+.btn-voltar {
+    background: #2563eb;
+}
+
+.btn-voltar:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 700px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

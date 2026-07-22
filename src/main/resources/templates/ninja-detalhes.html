@@ -66,8 +66,9 @@
                   ⬅ Voltar para lista
               </a>
 
-              <a class="btn btn-editar" href="#">
-                  ✏️ Editar Ninja
+              <a class="btn btn-editar"
+                 th:href="@{/ninjas/ui/updateNinja/{id}(id=${ninja.id})}">
+                 ✏️ Editar Ninja
               </a>
           </div>
 

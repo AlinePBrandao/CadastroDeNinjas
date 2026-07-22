@@ -1,6 +1,8 @@
 package project.java.cadastrodeninjas.Ninjas.Service;
 
 import org.springframework.stereotype.Service;
+import project.java.cadastrodeninjas.Missoes.DTO.MissoesDTO;
+import project.java.cadastrodeninjas.Missoes.Service.MissoesService;
 import project.java.cadastrodeninjas.Ninjas.DTO.NinjaDTO;
 import project.java.cadastrodeninjas.Ninjas.Mapper.NinjaMapper;
 import project.java.cadastrodeninjas.Ninjas.Model.NinjaModel;
@@ -15,10 +17,12 @@ public class NinjaService {
 
     private final NinjaRepository ninjaRepository; //NOTE: injeção de dependencia
     private final NinjaMapper ninjaMapper;
+    private final MissoesService missoesService;
 
-    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper, MissoesService missoesService) {
         this.ninjaRepository = ninjaRepository;
         this.ninjaMapper = ninjaMapper;
+        this.missoesService = missoesService;
     }
 
     //NOTE: Criar novo ninja
@@ -53,6 +57,17 @@ public class NinjaService {
             return ninjaMapper.map(ninja);
         }
         return null;
+    }
+
+    public NinjaDTO saveNinja(NinjaDTO ninjaDTO, Long missaoId){
+        if (missaoId != null){
+            MissoesDTO missoesDTO = missoesService.showMissoesById(missaoId);
+            ninjaDTO.setMissoes(missoesDTO);
+        }
+        else {
+            ninjaDTO.setMissoes(null);
+        }
+        return createNinja(ninjaDTO);
     }
 
     //NOTE: Deletar ninja - tem que ser um metodo void, nada sera retornado. Não depende do DTO, não depende do moddel, e sim do Repositpry (JPA)

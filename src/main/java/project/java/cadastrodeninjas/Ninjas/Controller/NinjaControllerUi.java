@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import project.java.cadastrodeninjas.Missoes.Service.MissoesService;
 import project.java.cadastrodeninjas.Ninjas.DTO.NinjaDTO;
 import project.java.cadastrodeninjas.Ninjas.Service.NinjaService;
 
@@ -15,9 +16,11 @@ import java.util.List;
 public class NinjaControllerUi {
 
     private final NinjaService ninjaService;
+    private final MissoesService missoesService;
 
-    public NinjaControllerUi(NinjaService ninjaService) {
+    public NinjaControllerUi(NinjaService ninjaService, MissoesService missoesService) {
         this.ninjaService = ninjaService;
+        this.missoesService = missoesService;
     }
 
     @GetMapping("/showAllNinjas")
@@ -41,9 +44,10 @@ public class NinjaControllerUi {
         }
     }
 
-    @PostMapping("/createNinja")
+    @GetMapping("/createNinja")
     public String createNinja(Model model){
         model.addAttribute("ninja", new NinjaDTO());
+        model.addAttribute("missoes", missoesService.showAllMissoes());
         return "ninja-adicionar";
     }
 
@@ -52,6 +56,7 @@ public class NinjaControllerUi {
         NinjaDTO ninja =  ninjaService.showNinjasById(id);
         if (ninja != null){
             model.addAttribute("ninja", ninja);
+            model.addAttribute("missoes", missoesService.showAllMissoes());
             return "ninja-alterar";
         }
         model.addAttribute("mensagem", "Ninja não encontrado");
@@ -59,10 +64,10 @@ public class NinjaControllerUi {
     }
 
     @PostMapping("/save")
-    public String saveNinja(@ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes){
-        ninjaService.createNinja(ninja);
+    public String saveNinja(@ModelAttribute NinjaDTO ninja, @RequestParam(required = false) Long missoesId, RedirectAttributes redirectAttributes){
+        NinjaDTO saveNinja = ninjaService.saveNinja(ninja, missoesId);
         redirectAttributes.addFlashAttribute("mensagem", "Ninja salvo com sucesso!");
-        return "redirect:/ninjas/ui/showAllNinjas";
+        return "redirect:/ninjas/ui/showNinjasById/" + saveNinja.getId();
     }
 
     @GetMapping("/deleteNinja/{id}") //deleta informações
