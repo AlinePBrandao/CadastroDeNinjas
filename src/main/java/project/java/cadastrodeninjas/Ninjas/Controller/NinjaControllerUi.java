@@ -64,8 +64,8 @@ public class NinjaControllerUi {
     }
 
     @PostMapping("/save")
-    public String saveNinja(@ModelAttribute NinjaDTO ninja, @RequestParam(required = false) Long missoesId, RedirectAttributes redirectAttributes){
-        NinjaDTO saveNinja = ninjaService.saveNinja(ninja, missoesId);
+    public String saveNinja(@ModelAttribute NinjaDTO ninja, @RequestParam(name = "missaoId", required = false) Long missaoId, RedirectAttributes redirectAttributes){
+        NinjaDTO saveNinja = ninjaService.saveNinja(ninja, missaoId);
         redirectAttributes.addFlashAttribute("mensagem", "Ninja salvo com sucesso!");
         return "redirect:/ninjas/ui/showNinjasById/" + saveNinja.getId();
     }
