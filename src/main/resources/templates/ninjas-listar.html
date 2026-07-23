@@ -60,8 +60,8 @@
                 </span>
         </td>
 
-        <td class="acoes">
-
+        <td>
+            <div class="acoes">
             <a class="btn btn-info"
                th:href="@{/ninjas/ui/showNinjasById/{id}(id=${ninja.id})}">
                 Ver detalhes
@@ -76,6 +76,7 @@
                th:href="@{/ninjas/ui/deleteNinja/{id}(id=${ninja.id})}">
                 Deletar
             </a>
+            </div>
         </td>
 
     </tr>

@@ -11,7 +11,7 @@ body{
 }
 
 .container{
-    max-width:1300px;
+    max-width:1440px;
     margin:auto;
 }
 
@@ -45,12 +45,12 @@ h1{
 
 .ninja-table td{
     padding:18px;
-    border-bottom:1px solid #eee;
     vertical-align:middle;
 }
 
 .ninja-table tbody tr{
     transition:.3s;
+    border-bottom:1px solid #eee;
 }
 
 .ninja-table tbody tr:hover{
@@ -80,18 +80,28 @@ h1{
 }
 
 .acoes{
-    display:flex;
-    gap:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .btn{
-    text-decoration:none;
-    padding:10px 16px;
-    border-radius:8px;
-    color:white;
-    font-size:14px;
-    font-weight:600;
-    transition:.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 16px;
+    min-width: 120px;
+    width: auto;
+
+    text-decoration: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;  /* impede quebra do texto */
 }
 
 .btn:hover{
@@ -138,5 +148,4 @@ h1{
     .acoes{
         flex-direction:column;
     }
-
 }
