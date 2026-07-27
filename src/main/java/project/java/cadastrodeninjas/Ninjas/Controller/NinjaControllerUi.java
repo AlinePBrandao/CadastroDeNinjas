@@ -70,7 +70,7 @@ public class NinjaControllerUi {
         return "redirect:/ninjas/ui/showNinjasById/" + saveNinja.getId();
     }
 
-    @GetMapping("/deleteNinja/{id}") //deleta informações
+    @GetMapping("/deleteNinja/{id}") //Get para redirecionar
     public String deleteNinjas(@PathVariable Long id){
         ninjaService.deleteNinjas(id);
         return "redirect:/ninjas/ui/showAllNinjas";
