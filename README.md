@@ -24,6 +24,7 @@ Cada ninja pode ser atribuído a uma única missão, enquanto uma missão pode s
 - **Maven**: Para build e gerenciamento de dependências do projeto.
 - **Docker**: Para build externo do banco de dados
 - **SQL**: Manipulação do banco de dados
+- **Swagger**: Documentação da API
 
 ## 🎲 Design do Banco de Dados
 
