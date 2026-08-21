@@ -18,20 +18,20 @@ public class MissoesController {
         this.missoesService = missoesService;
     }
 
-    @PostMapping("/createMissao") //envia informações
+    @PostMapping("/create") //envia informações
     public ResponseEntity<String> createMissao(@RequestBody MissoesDTO model){
         MissoesDTO newMissao = missoesService.createMissao(model);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Missao criada com sucesso: " + newMissao.getNome());
     }
 
-    @GetMapping("/showAllMissoes")
+    @GetMapping("/showAll")
     public ResponseEntity<List<MissoesDTO>> showAllMissoes(){
         List<MissoesDTO> missoes = missoesService.showAllMissoes();
         return ResponseEntity.ok(missoes);
     }
 
-    @GetMapping("/showMissoesById/{id}")
+    @GetMapping("/showById/{id}")
     public ResponseEntity<?> showMissoesById(@PathVariable Long id){
         MissoesDTO missoes = missoesService.showMissoesById(id);
 
@@ -44,9 +44,9 @@ public class MissoesController {
         }
     }
 
-    @PutMapping("/alterMissao/{id}")
+    @PutMapping("/alter/{id}")
     public ResponseEntity<?> alterMissoes(@PathVariable Long id, @RequestBody MissoesDTO alterModel){
-        MissoesDTO missoes = missoesService.alterMissoes(id, alterModel);
+        MissoesDTO missoes = missoesService.updateMissoes(id, alterModel);
         if (missoes != null){
             return ResponseEntity.ok(missoes);
         }
@@ -56,7 +56,7 @@ public class MissoesController {
         }
     }
 
-    @DeleteMapping("/deleteMissao/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteMissao(@PathVariable Long id){
         if (missoesService.showMissoesById(id) != null){
             missoesService.deleteMissao(id);
