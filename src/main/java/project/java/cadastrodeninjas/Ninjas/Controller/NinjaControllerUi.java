@@ -23,14 +23,21 @@ public class NinjaControllerUi {
         this.missoesService = missoesService;
     }
 
-    @GetMapping("/showAllNinjas")
+    @GetMapping("/create")
+    public String createNinja(Model model){
+        model.addAttribute("ninja", new NinjaDTO());
+        model.addAttribute("missoes", missoesService.showAllMissoes());
+        return "ninja-adicionar";
+    }
+
+    @GetMapping("/showAll")
     public String showAllNinjas(Model model){
         List<NinjaDTO> ninjas = ninjaService.showAllNinjas();
         model.addAttribute("ninjas", ninjas);
         return "ninjas-listar"; //NOTE: retorna o nome da pagina que renderiza, nesse caso a pagina html
     }
 
-    @GetMapping("/showNinjasById/{id}")
+    @GetMapping("/showById/{id}")
     public String showNinjasById(@PathVariable Long id, Model model){
         NinjaDTO ninja = ninjaService.showNinjasById(id);
 
@@ -44,14 +51,7 @@ public class NinjaControllerUi {
         }
     }
 
-    @GetMapping("/createNinja")
-    public String createNinja(Model model){
-        model.addAttribute("ninja", new NinjaDTO());
-        model.addAttribute("missoes", missoesService.showAllMissoes());
-        return "ninja-adicionar";
-    }
-
-    @GetMapping("/updateNinja/{id}")
+    @GetMapping("/update/{id}")
     public String updateNinjas(@PathVariable Long id, Model model){
         NinjaDTO ninja =  ninjaService.showNinjasById(id);
         if (ninja != null){
@@ -70,7 +70,7 @@ public class NinjaControllerUi {
         return "redirect:/ninjas/ui/showNinjasById/" + saveNinja.getId();
     }
 
-    @GetMapping("/deleteNinja/{id}") //Get para redirecionar
+    @GetMapping("/delete/{id}") //Get para redirecionar
     public String deleteNinjas(@PathVariable Long id){
         ninjaService.deleteNinjas(id);
         return "redirect:/ninjas/ui/showAllNinjas";

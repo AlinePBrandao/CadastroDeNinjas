@@ -42,13 +42,13 @@ public class NinjaService {
     }
 
     //NOTE: Listar os ninjas por ID
-    public NinjaDTO showNinjasById(long id){
+    public NinjaDTO showNinjasById(Long id){
         Optional<NinjaModel> ninjaByID = ninjaRepository.findById(id); //NOTE: Ninja pode nao existir
         return ninjaByID.map(ninjaMapper::map).orElse(null); //NOTE: Também usa streams
     }
 
     //NOTE: Atualizar ninja
-    public NinjaDTO updateNinjas(long id, NinjaDTO alterModel){
+    public NinjaDTO updateNinjas(Long id, NinjaDTO alterModel){
         Optional<NinjaModel> ninjaExist = ninjaRepository.findById(id);
         if (ninjaExist.isPresent()){
             NinjaModel updatedNinja = ninjaMapper.map(alterModel);

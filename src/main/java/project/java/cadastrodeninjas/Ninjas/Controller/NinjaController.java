@@ -24,14 +24,9 @@ public class NinjaController {
     }
 
     //NOTE: Endpoints
-    @GetMapping("/boasvindas") //NOTE: passando uma rota, retorna informações
-    @Operation(summary = "Mensagem de boas vindas",  description = "Essa rota mostra uma mensagem de boas vidas") //NOTE: Annotation do Swagger
-    public String boasvindas(){
-        return "Boas Vindas! Essa é minha primeira mensagem nessa rota";
-    }
 
     //NOTE: Adicionar ninja (CREATE)
-    @PostMapping("/createNinja") //NOTE: envia informações
+    @PostMapping("/create") //NOTE: envia informações
     @Operation(summary = "Cria um novo ninja", description = "Rota cria um novo ninja e insere no banco de dados")
     @ApiResponses(value = { //NOTE: Respostas do servidor
             @ApiResponse(responseCode = "201", description = "Ninja criado com sucesso"),
@@ -45,7 +40,7 @@ public class NinjaController {
     }
 
     //NOTE: Mostrar todos os ninjas (READ)
-    @GetMapping("/showAllNinjas")
+    @GetMapping("/showAll")
     @Operation(summary = "Lista todos os ninjas", description = "Rota lista todos os ninjas cadastrados")
     @ApiResponses(value = { //NOTE: Respostas do servidor
             @ApiResponse(responseCode = "200", description = "Ninjas encontrados com sucesso"),
@@ -58,7 +53,7 @@ public class NinjaController {
     }
 
     //NOTE: Mostrar ninja por ID (READ)
-    @GetMapping("/showNinjasById/{id}") //NOTE: Path variable onde o usuario digita o ID na url
+    @GetMapping("/showById/{id}") //NOTE: Path variable onde o usuario digita o ID na url
     @Operation(summary = "Lista ninja por ID", description = "Rota lista um ninja pelo seu id")
     @ApiResponses(value = { //NOTE: Respostas do servidor
             @ApiResponse(responseCode = "200", description = "Ninja encontrado com sucesso"),
@@ -78,7 +73,7 @@ public class NinjaController {
     }
 
     //NOTE: Alterar dados do ninja (UPDATE)
-    @PutMapping("/updateNinja/{id}") //altera informações
+    @PutMapping("/update/{id}") //altera informações
     @Operation(summary = "Altera ninja por ID", description = "Rota altera um ninja pelo seu id")
     @ApiResponses(value = { //NOTE: Respostas do servidor
             @ApiResponse(responseCode = "200", description = "Ninja alterado com sucesso"),
@@ -101,7 +96,7 @@ public class NinjaController {
     }
 
     //NOTE: Deletar ninja (DELETE)
-    @DeleteMapping("/deleteNinja/{id}") //deleta informações
+    @DeleteMapping("/delete/{id}") //deleta informações
     @Operation(summary = "Deleta ninja por id", description = "Rota deleta um ninja pelo seu id")
     @ApiResponses(value = { //NOTE: Respostas do servidor
             @ApiResponse(responseCode = "200", description = "Ninja deletado com sucesso"),

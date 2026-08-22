@@ -44,8 +44,8 @@ public class MissoesController {
         }
     }
 
-    @PutMapping("/alter/{id}")
-    public ResponseEntity<?> alterMissoes(@PathVariable Long id, @RequestBody MissoesDTO alterModel){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateMissoes(@PathVariable Long id, @RequestBody MissoesDTO alterModel){
         MissoesDTO missoes = missoesService.updateMissoes(id, alterModel);
         if (missoes != null){
             return ResponseEntity.ok(missoes);
