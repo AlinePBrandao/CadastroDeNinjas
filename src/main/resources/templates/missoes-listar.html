@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Ninjas</title>
+
+    <link rel="stylesheet" th:href="@{/css/missoes-listar.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+        <a class="btn btn-info"
+           th:href="@{/missoes/ui/create}">
+            ➕ Nova Missão
+        </a>
+    </div>
+
+    <h1>Lista de Missões</h1>
+    <table class="missao-table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Dificuldade</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each ="missao: ${missoes}">
+
+            <td th:text="${missao.id}"> </td>
+            <td th:text="${missao.nome}"> </td>
+            <td th:text="${missao.dificuldade}"> </td>
+            <td th:text="${missao.descricao}"> </td>
+
+            <td>
+                <div class="acoes">
+                    <a class="btn btn-info"
+                       th:href="@{/missao/ui/showById/{id}(id=${missao.id})}">
+                        Ver detalhes
+                    </a>
+
+                    <a class="btn btn-warning"
+                       th:href="@{/missao/ui/update/{id}(id=${missao.id})}">
+                        Alterar
+                    </a>
+
+                    <a class="btn btn-danger"
+                       th:href="@{/missao/ui/delete/{id}(id=${missao.id})}">
+                        Deletar
+                    </a>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
