@@ -34,12 +34,12 @@ public class MissoesService {
                 .collect(Collectors.toList());
     }
 
-    public MissoesDTO showMissoesById(long id){
+    public MissoesDTO showMissoesById(Long id){
         Optional<MissoesModel> missoesById = missoesRepository.findById(id);
         return missoesById.map(missoesMapper::map).orElse(null);
     }
 
-    public MissoesDTO alterMissoes(long id, MissoesDTO alterModel){
+    public MissoesDTO updateMissoes(Long id, MissoesDTO alterModel){
         Optional<MissoesModel> missaoExist = missoesRepository.findById(id);
         if (missaoExist.isPresent()){
             MissoesModel updateMissao = missoesMapper.map(alterModel);
@@ -48,6 +48,12 @@ public class MissoesService {
             return missoesMapper.map(missao);
         }
             return null;
+    }
+
+    public MissoesDTO saveMissao(MissoesDTO missoesDTO){
+        MissoesModel missao  = missoesMapper.map(missoesDTO);
+        MissoesModel missaoSalva = missoesRepository.save(missao);
+        return missoesMapper.map(missaoSalva);
     }
 
     public void deleteMissao(Long id){
