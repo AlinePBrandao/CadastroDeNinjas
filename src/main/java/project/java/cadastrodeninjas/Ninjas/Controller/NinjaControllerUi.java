@@ -60,19 +60,19 @@ public class NinjaControllerUi {
             return "ninja-alterar";
         }
         model.addAttribute("mensagem", "Ninja não encontrado");
-        return "redirect:/ninjas/ui/showAllNinjas";
+        return "redirect:/ninjas/ui/showAll";
     }
 
     @PostMapping("/save")
     public String saveNinja(@ModelAttribute NinjaDTO ninja, @RequestParam(name = "missaoId", required = false) Long missaoId, RedirectAttributes redirectAttributes){
         NinjaDTO saveNinja = ninjaService.saveNinja(ninja, missaoId);
         redirectAttributes.addFlashAttribute("mensagem", "Ninja salvo com sucesso!");
-        return "redirect:/ninjas/ui/showNinjasById/" + saveNinja.getId();
+        return "redirect:/ninjas/ui/showById/" + saveNinja.getId();
     }
 
     @GetMapping("/delete/{id}") //Get para redirecionar
     public String deleteNinjas(@PathVariable Long id){
         ninjaService.deleteNinjas(id);
-        return "redirect:/ninjas/ui/showAllNinjas";
+        return "redirect:/ninjas/ui/showAll";
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Detalhes do Ninja</title>
 
-      <link rel="stylesheet" th:href="@{/css/detalhes.css}">
+      <link rel="stylesheet" th:href="@{/css/ninja-detalhes.css}">
   </head>
   <body>
 
@@ -62,12 +62,12 @@
 
           <div class="acoes">
               <a class="btn btn-voltar"
-                 th:href="@{/ninjas/ui/showAllNinjas}">
+                 th:href="@{/ninjas/ui/showAll}">
                   ⬅ Voltar para lista
               </a>
 
               <a class="btn btn-editar"
-                 th:href="@{/ninjas/ui/updateNinja/{id}(id=${ninja.id})}">
+                 th:href="@{/ninjas/ui/update/{id}(id=${ninja.id})}">
                  ✏️ Editar Ninja
               </a>
           </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Tabela de Ninjas</title>
 
-    <link rel="stylesheet" th:href="@{/css/listar.css}">
+    <link rel="stylesheet" th:href="@{/css/ninja-listar.css}">
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 
     <div class="top-bar">
         <a class="btn btn-info"
-           th:href="@{/ninjas/ui/createNinja}">
+           th:href="@{/ninjas/ui/create}">
             ➕ Novo Ninja
         </a>
     </div>
@@ -36,8 +36,17 @@
     <tr th:each ="ninja: ${ninjas}">
 
         <td>
-            <img th:src="${ninja.imgUrl}" class="avatar" alt="Imagem do Ninja">
+            <img th:if="${ninja.imgUrl != null and !ninja.imgUrl.isEmpty()}"
+                 th:src="${ninja.imgUrl}"
+                 class="avatar"
+                 alt="Imagem do Ninja">
+
+            <img th:unless="${ninja.imgUrl != null and !ninja.imgUrl.isEmpty()}"
+                 th:src="@{/images/default-avatar.jpg}"
+                 class="avatar"
+                 alt="Avatar padrão">
         </td>
+
         <td th:text="${ninja.id}"> </td>
         <td th:text="${ninja.nome}"> </td>
         <td th:text="${ninja.email}"> </td>
@@ -63,17 +72,17 @@
         <td>
             <div class="acoes">
             <a class="btn btn-info"
-               th:href="@{/ninjas/ui/showNinjasById/{id}(id=${ninja.id})}">
+               th:href="@{/ninjas/ui/showById/{id}(id=${ninja.id})}">
                 Ver detalhes
             </a>
 
             <a class="btn btn-warning"
-               th:href="@{/ninjas/ui/updateNinja/{id}(id=${ninja.id})}">
+               th:href="@{/ninjas/ui/update/{id}(id=${ninja.id})}">
                Alterar
             </a>
 
             <a class="btn btn-danger"
-               th:href="@{/ninjas/ui/deleteNinja/{id}(id=${ninja.id})}">
+               th:href="@{/ninjas/ui/delete/{id}(id=${ninja.id})}">
                 Deletar
             </a>
             </div>
