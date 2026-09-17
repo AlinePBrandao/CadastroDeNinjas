@@ -15,14 +15,17 @@ import java.util.List;
 public class MissoesControllerUi {
 
     private final MissoesService missoesService;
+    private final NinjaService ninjaService;
 
     public MissoesControllerUi(MissoesService missoesService, NinjaService ninjaService) {
         this.missoesService = missoesService;
+        this.ninjaService = ninjaService;
     }
 
-    @PostMapping("/create") //envia informações
+    @GetMapping("/create") //envia informações
     public String createMissao(Model model){
         model.addAttribute("missao", new MissoesDTO());
+        model.addAttribute("ninjas", ninjaService.showAllNinjas());
         return "missoes-adicionar";
     }
 
@@ -63,13 +66,13 @@ public class MissoesControllerUi {
     public String saveMissao(MissoesDTO missao, Model model){
         model.addAttribute("missao", missao);
         missoesService.saveMissao(missao);
-        return "redirect:/missoes/ui/missoes-listar";
+        return "redirect:/missoes/ui/showById";
     }
 
 
     @DeleteMapping("/delete/{id}")
     public String deleteMissao(@PathVariable Long id){
         missoesService.deleteMissao(id);
-        return "redirect:/missoes/ui/missoes-listar";
+        return "redirect:/missoes/ui/showAll";
     }
 }
