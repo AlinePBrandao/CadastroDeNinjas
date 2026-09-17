@@ -57,6 +57,13 @@ h1{
     background:#f8f9ff;
 }
 
+/* Centraliza a coluna de ações */
+
+.ninja-table th:last-child,
+.ninja-table td:last-child {
+    text-align: center;
+}
+
 .avatar{
     width:60px;
     height:60px;
