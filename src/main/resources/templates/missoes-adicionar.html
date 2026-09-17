@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adicionar Missão</title>
+
+    <link rel="stylesheet" th:href="@{/css/missoes-adicionar.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="form-card">
+
+        <h1>🥷 Adicionar Missão</h1>
+
+        <p class="subtitulo">
+            Cadastre uma nova missão.
+        </p>
+
+        <form th:action="@{/missoes/ui/save}"
+              th:object="${missao}"
+              method="post">
+
+            <!-- Nome -->
+            <div class="form-group">
+
+                <label for="nome">
+                    Nome
+                </label>
+
+                <input
+                        type="text"
+                        id="nome"
+                        th:field="*{nome}"
+                        placeholder="Digite o nome da missão"
+                        required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="dificuldade">
+                    Dificuldade
+                </label>
+
+                <select
+                        id="dificuldade"
+                        th:field="*{dificuldade}"
+                        required>
+
+                    <option value="">
+                        Selecione a dificuldade
+                    </option>
+
+                    <option value="FÁCIL">
+                        FÁCIL
+                    </option>
+
+                    <option value="MÉDIO">
+                        MÉDIO
+                    </option>
+
+                    <option value="DIFÍCIL">
+                        DIFÍCIL
+                    </option>
+
+                    <option value="MUITO DIFÍCIL">
+                        MUITO DIFÍCIL
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="descricao">
+                    Descrição
+                </label>
+
+                <textarea
+                        id="descricao"
+                        th:field="*{descricao}"
+                        placeholder="Digite a descrição da missão"
+                        rows="4"
+                        required></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="ninjaId">
+                    Ninja
+                </label>
+
+                <select
+                        id="ninjaId"
+                        name="ninjaId">
+
+                    <option value="">
+                        -- Sem ninja --
+                    </option>
+
+                    <option
+                            th:each="ninja : ${ninjas}"
+                            th:value="${ninja.id}"
+                            th:text="${ninja.nome}">
+                    </option>
+
+                </select>
+
+                <small>
+                    Você pode associar um ninja agora ou deixar para depois.
+                </small>
+
+            </div>
+
+
+            <div class="acoes">
+
+                <button
+                        type="submit"
+                        class="btn btn-salvar">
+
+                    💾 Salvar Missão
+
+                </button>
+
+                <a
+                        class="btn btn-voltar"
+                        th:href="@{/missoes/ui/showAll}">
+
+                    ⬅ Voltar para lista
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
