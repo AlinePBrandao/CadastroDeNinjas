@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class MissoesDTO {
 
-    private Long id;
+    private long id;
     private String nome;
     private String dificuldade;
     private String descricao;
